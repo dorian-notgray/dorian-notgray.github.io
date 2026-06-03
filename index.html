@@ -1,178 +1,111 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Pasapalabra Equipos</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    </head>
-    <body class="h-screen flex flex-col overflow-hidden w-full bg-black text-white selection:bg-primary/30">
-        <!-- Menu View -->
-        <div id="menu-view" class="flex flex-col items-center justify-center w-full h-full p-8">
-            <h1 class="text-5xl font-bold mb-12 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500">PASAPALABRA</h1>
-            <div class="grid grid-cols-2 gap-8 w-full">
-                <div onclick="selectTeam(0)" class="cursor-pointer rounded-2xl border-2 border-blue-500 p-6 hover:border-blue-300 transition-all bg-blue-900/30 hover:bg-blue-900/50">
-                    <h3 class="text-2xl font-bold text-blue-300 mb-4 text-center">Equipo Azul</h3>
-                    <div class="relative w-full aspect-square flex items-center justify-center">
-                        <div id="menu-rosco-0" class="relative w-full h-full rounded-full flex items-center justify-center"></div>
-                    </div>
-                    <div class="mt-4 grid grid-cols-3 gap-2 text-center text-sm">
-                        <div><span class="text-green-400 font-bold" id="menu-correct-0">0</span><br/><span class="opacity-70">Aciertos</span></div>
-                        <div><span class="text-red-400 font-bold" id="menu-error-0">0</span><br/><span class="opacity-70">Errores</span></div>
-                        <div><span class="text-yellow-300 font-mono" id="menu-timer-0">5:00</span><br/><span class="opacity-70">Tiempo</span></div>
-                    </div>
-                </div>
-                <div onclick="selectTeam(1)" class="cursor-pointer rounded-2xl border-2 border-red-500 p-6 hover:border-red-300 transition-all bg-red-900/30 hover:bg-red-900/50">
-                    <h3 class="text-2xl font-bold text-red-300 mb-4 text-center">Equipo Rojo</h3>
-                    <div class="relative w-full aspect-square flex items-center justify-center">
-                        <div id="menu-rosco-1" class="relative w-full h-full rounded-full flex items-center justify-center"></div>
-                    </div>
-                    <div class="mt-4 grid grid-cols-3 gap-2 text-center text-sm">
-                        <div><span class="text-green-400 font-bold" id="menu-correct-1">0</span><br/><span class="opacity-70">Aciertos</span></div>
-                        <div><span class="text-red-400 font-bold" id="menu-error-1">0</span><br/><span class="opacity-70">Errores</span></div>
-                        <div><span class="text-yellow-300 font-mono" id="menu-timer-1">5:00</span><br/><span class="opacity-70">Tiempo</span></div>
-                    </div>
-                </div>
-                <div onclick="selectTeam(2)" class="cursor-pointer rounded-2xl border-2 border-yellow-400 p-6 hover:border-yellow-200 transition-all bg-yellow-900/30 hover:bg-yellow-900/50">
-                    <h3 class="text-2xl font-bold text-yellow-300 mb-4 text-center">Equipo Amarillo</h3>
-                    <div class="relative w-full aspect-square flex items-center justify-center">
-                        <div id="menu-rosco-2" class="relative w-full h-full rounded-full flex items-center justify-center"></div>
-                    </div>
-                    <div class="mt-4 grid grid-cols-3 gap-2 text-center text-sm">
-                        <div><span class="text-green-400 font-bold" id="menu-correct-2">0</span><br/><span class="opacity-70">Aciertos</span></div>
-                        <div><span class="text-red-400 font-bold" id="menu-error-2">0</span><br/><span class="opacity-70">Errores</span></div>
-                        <div><span class="text-yellow-300 font-mono" id="menu-timer-2">5:00</span><br/><span class="opacity-70">Tiempo</span></div>
-                    </div>
-                </div>
-                <div onclick="selectTeam(3)" class="cursor-pointer rounded-2xl border-2 border-green-500 p-6 hover:border-green-300 transition-all bg-green-900/30 hover:bg-green-900/50">
-                    <h3 class="text-2xl font-bold text-green-300 mb-4 text-center">Equipo Verde</h3>
-                    <div class="relative w-full aspect-square flex items-center justify-center">
-                        <div id="menu-rosco-3" class="relative w-full h-full rounded-full flex items-center justify-center"></div>
-                    </div>
-                    <div class="mt-4 grid grid-cols-3 gap-2 text-center text-sm">
-                        <div><span class="text-green-400 font-bold" id="menu-correct-3">0</span><br/><span class="opacity-70">Aciertos</span></div>
-                        <div><span class="text-red-400 font-bold" id="menu-error-3">0</span><br/><span class="opacity-70">Errores</span></div>
-                        <div><span class="text-yellow-300 font-mono" id="menu-timer-3">5:00</span><br/><span class="opacity-70">Tiempo</span></div>
-                    </div>
-                </div>
-            </div>
-            <p class="text-sm opacity-50 mt-12 text-center">Presiona 1-4 para seleccionar un equipo | ESC para cerrar</p>
-        </div>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pasapalabra 4 Equipos</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
+        @theme {
+            --color-primary: #a855f7;
+            --color-success: #00d084;
+            --color-error: #ff141e;
+            --color-warn: #ee9950;
+        }
+    </style>
+    <style>
+        body {
+            background-color: #111;
+            background-image: radial-gradient(circle at center, #222 0%, #111 100%);
+            color: white;
+            user-select: none;
+            overflow-x: hidden;
+        }
 
-
-        <!-- Team View (Individual Team) -->
-        <div id="team-view" class="hidden flex flex-col w-full h-full p-8">
-            <div class="flex justify-between items-center mb-8">
-                <h1 id="team-title" class="text-4xl font-bold">Equipo Azul</h1>
-                <div class="text-3xl font-mono font-bold text-yellow-300" id="team-timer">300</div>
-            </div>
-
-            <div class="flex flex-1 gap-8">
-                <!-- Rosco -->
-                <div class="flex-1 flex flex-col items-center justify-center relative">
-                    <div id="rosco" class="relative w-96 h-96 rounded-full flex items-center justify-center"></div>
-                    <div class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
-                        <div class="text-center p-4 bg-white/10 rounded-full w-56 h-56 flex flex-col items-center justify-center backdrop-blur-sm border border-white/20 shadow-inner">
-                            <span id="current-letter" class="text-6xl font-bold" style="color: var(--team-color)">A</span>
-                            <span class="text-sm uppercase tracking-widest opacity-50 mt-2">Actual</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Info Panel -->
-                <div class="flex-1 flex flex-col justify-between">
-                    <div class="space-y-4">
-                        <div class="bg-white/10 p-6 rounded-2xl border border-white/20">
-                            <div class="grid grid-cols-2 gap-4 mb-6">
-                                <div>
-                                    <span class="block text-3xl font-bold text-green-400" id="team-correct">0</span>
-                                    <span class="text-sm opacity-70">Aciertos</span>
-                                </div>
-                                <div>
-                                    <span class="block text-3xl font-bold text-red-400" id="team-error">0</span>
-                                    <span class="text-sm opacity-70">Errores</span>
-                                </div>
-                            </div>
-                            <div class="text-center">
-                                <span class="block text-xl font-mono opacity-70" id="team-remaining">25 letras</span>
-                            </div>
-                        </div>
-
-                        <!-- Player Space -->
-                        <div class="bg-purple-900/30 border-2 border-purple-500/50 rounded-2xl p-8 text-center">
-                            <p class="text-sm opacity-70 mb-4">ESPACIO PARA JUGADOR</p>
-                            <div class="w-full h-32 bg-black/50 rounded-xl border border-purple-500/30 flex items-center justify-center">
-                                <span class="text-white/50 font-bold text-lg">Puesto aquí</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Controls -->
-                    <div class="bg-white/10 p-6 rounded-2xl border border-white/20">
-                        <p class="text-sm font-bold mb-4 text-center opacity-70">CONTROLES</p>
-                        <div class="space-y-2 text-sm">
-                            <div class="flex justify-between"><span>C</span><span>✓ Correcto</span></div>
-                            <div class="flex justify-between"><span>E</span><span>✗ Error</span></div>
-                            <div class="flex justify-between"><span>P</span><span>» Pasapalabra</span></div>
-                            <div class="flex justify-between"><span>ESPACIO</span><span>⏸ Pausa/Reanudar</span></div>
-                            <div class="flex justify-between"><span>+ / -</span><span>+/- 5 segundos</span></div>
-                            <div class="flex justify-between"><span>T</span><span>Poner tiempo</span></div>
-                            <div class="flex justify-between"><span>M</span><span>Menú</span></div>
-                            <div class="flex justify-between text-yellow-400 font-bold"><span>← →</span><span>Cambiar letra</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <style is:global>
         .letter-node {
             position: absolute;
-            width: 48px;
-            height: 48px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: bold;
-            font-size: 18px;
+            font-weight: 900;
             color: white;
-            transition: all 0.3s ease;
-            background: #3388ff;
-            border: 2px solid rgba(255,255,255,0.3);
-            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: #444; 
+            border: 2px solid rgba(255,255,255,0.1);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
             user-select: none;
+            cursor: pointer;
         }
 
-        .letter-node:hover {
-            border-color: white;
+        /* Sizes for individual view */
+        .indiv-node {
+            width: 32px;
+            height: 32px;
+            font-size: 14px;
+        }
+        @media (min-width: 768px) {
+            .indiv-node {
+                width: 48px;
+                height: 48px;
+                font-size: 20px;
+                border-width: 3px;
+            }
+        }
+        @media (min-width: 1024px) {
+            .indiv-node {
+                width: 56px;
+                height: 56px;
+                font-size: 24px;
+            }
+        }
+
+        /* Sizes for global view */
+        .global-node {
+            width: 20px;
+            height: 20px;
+            font-size: 10px;
+        }
+        @media (min-width: 768px) {
+            .global-node {
+                width: 24px;
+                height: 24px;
+                font-size: 11px;
+            }
         }
 
         .letter-node.active {
             transform: scale(1.4);
-            box-shadow: 0 0 30px rgba(255,255,255,0.6);
+            z-index: 20;
             border-color: white;
-            z-index: 10;
+            box-shadow: 0 0 20px currentColor;
         }
 
         .letter-node.correct {
-            background: #00d084;
-            box-shadow: 0 0 20px rgba(0, 208, 132, 0.5);
+            background: #00d084 !important; /* success */
+            border-color: #00d084;
+            box-shadow: 0 0 15px rgba(0, 208, 132, 0.4);
         }
 
         .letter-node.error {
-            background: #ff141e;
-            box-shadow: 0 0 20px rgba(255, 20, 30, 0.5);
+            background: #ff141e !important; /* error */
+            border-color: #ff141e;
+            box-shadow: 0 0 15px rgba(255, 20, 30, 0.4);
         }
 
-        .letter-node.pasapalabra {
-            background: #ee9950;
-            box-shadow: 0 0 20px rgba(238, 153, 80, 0.5);
+        /* Global card hover effects */
+        .team-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .team-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
         }
 
-        .shake {
+        /* Animations */
+        .shake-err {
             animation: shake 0.4s ease-in-out;
         }
-
         @keyframes shake {
             0%, 100% { transform: scale(1.4) translateX(0); }
             25% { transform: scale(1.4) translateX(-8px); }
@@ -180,386 +113,555 @@
             75% { transform: scale(1.4) translateX(-8px); }
         }
 
-        .pop {
-            animation: pop 0.3s ease-out;
+        .pop-ok {
+            animation: pop 0.4s ease-out;
         }
-
         @keyframes pop {
             0% { transform: scale(1.4); }
-            50% { transform: scale(1.6); }
+            50% { transform: scale(1.7); }
             100% { transform: scale(1.4); }
         }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4">
 
-        .glow {
-            animation: glow 0.5s ease-out;
-        }
+    <div class="container mx-auto relative z-10 flex flex-col items-center justify-center min-h-[85vh] w-full">
+        <div id="app-container" class="w-full max-w-6xl bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-4 md:p-8 shadow-2xl relative overflow-hidden flex flex-col items-center">
+            
+            <!-- START SCREEN -->
+            <div id="start-screen" class="flex flex-col items-center justify-center text-center space-y-6 py-12 w-full">
+                <div class="w-24 h-24 bg-primary/20 rounded-full flex items-center justify-center animate-bounce mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                </div>
+                <h1 class="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-linear-to-r from-fuchsia-500 to-blue-400">Pasapalabra Equipos</h1>
+                <p class="text-lg text-gray-400 max-w-md">
+                    Modo presentador con 4 roscos independientes.
+                </p>
 
-        @keyframes glow {
-            0% { filter: drop-shadow(0 0 0px rgba(255,255,255,1)); }
-            100% { filter: drop-shadow(0 0 0px rgba(255,255,255,0)); }
-        }
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-6 mt-8 max-w-sm w-full space-y-4">
+                    <div class="space-y-2">
+                        <label class="text-sm font-bold uppercase tracking-wider opacity-70">Tiempo Inicial (segundos)</label>
+                        <input type="number" id="default-time-input" value="300" class="w-full bg-black/40 border border-white/10 rounded-xl p-3 text-center text-2xl font-mono font-bold outline-none focus:ring-2 focus:ring-primary transition-all text-white" />
+                    </div>
+                </div>
 
-        input[type="text"]:focus {
-            outline: none;
-            border: 2px solid var(--team-color);
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-        }
-        </style>
+                <button id="start-btn" class="mt-8 px-10 py-4 bg-primary hover:bg-primary/90 text-white rounded-full font-bold text-xl transition-all hover:scale-105 active:scale-95 shadow-lg shadow-primary/20">
+                    Iniciar Partida
+                </button>
+            </div>
 
-        <script>
-        // Constants
-        const LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').filter(l => l !== 'Ñ');
-        const TEAM_COLORS = ['#3b82f6', '#ef4444', '#eab308', '#22c55e'];
-        const TEAM_NAMES = ['Azul', 'Rojo', 'Amarillo', 'Verde'];
-        const INITIAL_TIME = 300;
+            <!-- GLOBAL VIEW -->
+            <div id="global-screen" class="hidden flex-col w-full space-y-6">
+                <div class="flex justify-between items-center w-full">
+                    <h2 class="text-2xl font-bold bg-clip-text text-transparent bg-linear-to-r from-white to-white/50">Vista General</h2>
+                    <button id="reset-game-btn" class="px-4 py-2 bg-error/20 text-error hover:bg-error hover:text-white border border-error/30 rounded-xl font-bold transition-all text-sm">
+                        Reiniciar Juego
+                    </button>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-5xl mx-auto">
+                    <!-- Cards will be generated here by JS -->
+                    <div id="global-cards-container" class="contents"></div>
+                </div>
+            </div>
 
-        // State
-        let teams = [
-            { name: 'Azul', color: TEAM_COLORS[0], correct: 0, error: 0, time: INITIAL_TIME, letters: {}, paused: false, timerInterval: null, currentIndex: 0 },
-            { name: 'Rojo', color: TEAM_COLORS[1], correct: 0, error: 0, time: INITIAL_TIME, letters: {}, paused: false, timerInterval: null, currentIndex: 0 },
-            { name: 'Amarillo', color: TEAM_COLORS[2], correct: 0, error: 0, time: INITIAL_TIME, letters: {}, paused: false, timerInterval: null, currentIndex: 0 },
-            { name: 'Verde', color: TEAM_COLORS[3], correct: 0, error: 0, time: INITIAL_TIME, letters: {}, paused: false, timerInterval: null, currentIndex: 0 }
+            <!-- INDIVIDUAL VIEW -->
+            <div id="individual-screen" class="hidden flex-col items-center justify-center w-full py-4 space-y-8 animate-[fade-in_0.3s_ease-out]">
+                <div class="flex justify-between items-center w-full max-w-3xl">
+                    <button id="back-to-global-btn" class="flex items-center gap-2 px-5 py-3 bg-white/10 hover:bg-white/20 rounded-full font-bold transition-all">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+                        </svg>
+                        Volver
+                    </button>
+                    <h2 id="indiv-team-name" class="text-2xl font-black uppercase tracking-widest text-center" style="color: var(--active-color);">Equipo X</h2>
+                    <div class="w-24"></div> <!-- Spacer for center alignment -->
+                </div>
+
+                <div class="relative w-[320px] h-[320px] md:w-[500px] md:h-[500px] lg:w-[600px] lg:h-[600px] flex items-center justify-center mt-4">
+                    <div id="indiv-rosco" class="relative w-full h-full border-0 flex items-center justify-center">
+                        <!-- Letters generated by JS -->
+                    </div>
+                    
+                    <div class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none mt-[-15%]">
+                        <div class="text-center p-6 md:p-10 bg-black/40 rounded-full aspect-square flex flex-col items-center justify-center backdrop-blur-md border border-white/10 shadow-2xl" style="width: 55%;">
+                            <span id="indiv-timer" class="text-6xl md:text-8xl font-mono font-black" style="color: var(--active-color);">150</span>
+                            <div class="flex items-center gap-2 mt-2">
+                                <span id="indiv-timer-icon" class="text-xl">⏸️</span>
+                                <span class="text-sm md:text-base uppercase font-bold opacity-70 tracking-widest">Segundos</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Letter Indicator in center bottom -->
+                    <div class="absolute bottom-[25%] md:bottom-[20%] flex flex-col items-center justify-center pointer-events-none">
+                        <div id="indiv-current-letter" class="w-16 h-16 md:w-20 md:h-20 rounded-full flex items-center justify-center text-4xl md:text-5xl font-black text-white shadow-[0_0_30px_rgba(255,255,255,0.3)] transition-all duration-300 transform scale-100" style="background-color: var(--active-color);">
+                            A
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-black/30 p-4 md:p-6 rounded-2xl border border-white/10 w-full max-w-3xl mt-12 grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="text-center border-r border-white/10 last:border-0 hidden md:block">
+                        <div class="text-sm opacity-50 uppercase tracking-wider mb-1">Controles</div>
+                        <div class="text-xs font-mono bg-white/10 rounded px-2 py-1 inline-block">Teclado</div>
+                    </div>
+                    <div class="text-center border-r border-white/10 md:border-transparent">
+                        <button id="btn-correct" class="w-full h-full min-h-[60px] bg-success/20 hover:bg-success text-success hover:text-white border border-success/30 rounded-xl font-bold flex flex-col items-center justify-center gap-1 transition-all">
+                            <span>✅ Correcto</span>
+                            <span class="text-[10px] opacity-70">(Arr ↑ / C)</span>
+                        </button>
+                    </div>
+                    <div class="text-center border-r border-white/10">
+                        <button id="btn-error" class="w-full h-full min-h-[60px] bg-error/20 hover:bg-error text-error hover:text-white border border-error/30 rounded-xl font-bold flex flex-col items-center justify-center gap-1 transition-all">
+                            <span>❌ Error</span>
+                            <span class="text-[10px] opacity-70">(Arr ↓ / E)</span>
+                        </button>
+                    </div>
+                    <div class="text-center">
+                        <button id="btn-pasa" class="w-full h-full min-h-[60px] bg-warn/20 hover:bg-warn text-warn hover:text-white border border-warn/30 rounded-xl font-bold flex flex-col items-center justify-center gap-1 transition-all">
+                            <span>⏭️ Pasa</span>
+                            <span class="text-[10px] opacity-70">(Arr → / P)</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="flex gap-4 w-full max-w-sm justify-center mt-4">
+                    <button id="btn-minus" class="px-4 py-2 bg-white/5 hover:bg-white/15 border border-white/10 rounded-xl font-mono text-sm transition-all">-5s (Tecla S)</button>
+                    <button id="btn-space" class="px-6 py-2 bg-primary/20 hover:bg-primary border border-primary/50 text-white rounded-xl font-bold transition-all shadow-lg shadow-primary/20">Play/Pause (Espacio)</button>
+                    <button id="btn-plus" class="px-4 py-2 bg-white/5 hover:bg-white/15 border border-white/10 rounded-xl font-mono text-sm transition-all">+5s (Tecla W)</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+        
+        // Team definitions
+        const TEAMS_CONFIG = [
+            { id: 0, name: "Equipo Rojo", color: "#ff4444" },
+            { id: 1, name: "Equipo Azul", color: "#3388ff" },
+            { id: 2, name: "Equipo Verde", color: "#00d084" },
+            { id: 3, name: "Equipo Amarillo", color: "#ee9950" }
         ];
 
-        let currentView = 'menu'; // menu, team
-        let currentTeam = 0;
-        let timeInputValue = '';
+        let teamsData = [];
+        let activeTeamId = null;
+        let timerInterval = null;
+        let viewState = 'start'; // start, global, individual
 
-        // Initialize
-        function init() {
-            teams.forEach((team, idx) => {
-                team.letters = {};
-                LETTERS.forEach(letter => {
-                    team.letters[letter] = 'pending'; // pending, correct, error, pasapalabra
-                });
-            });
-            drawMenuRoscos();
-            startMenuUpdates();
-            showMenu();
-        }
+        // DOM Elements
+        const screens = {
+            start: document.getElementById('start-screen'),
+            global: document.getElementById('global-screen'),
+            individual: document.getElementById('individual-screen')
+        };
+        
+        const defaultTimeInput = document.getElementById('default-time-input');
+        const globalCardsContainer = document.getElementById('global-cards-container');
+        
+        const indivRosco = document.getElementById('indiv-rosco');
+        const indivTimer = document.getElementById('indiv-timer');
+        const indivTimerIcon = document.getElementById('indiv-timer-icon');
+        const indivCurrentLetter = document.getElementById('indiv-current-letter');
+        const indivTeamName = document.getElementById('indiv-team-name');
 
-        // Draw all roscos in menu
-        function drawMenuRoscos() {
-            teams.forEach((team, teamIdx) => {
-                const container = document.getElementById(`menu-rosco-${teamIdx}`);
-                if (!container) return;
-                
-                container.innerHTML = '';
-                const radius = 60;
-                const angleStep = (2 * Math.PI) / LETTERS.length;
-
-                LETTERS.forEach((letter, i) => {
-                    const angle = i * angleStep - Math.PI / 2;
-                    const x = radius + (radius - 12) * Math.cos(angle);
-                    const y = radius + (radius - 12) * Math.sin(angle);
-
-                    const node = document.createElement('div');
-                    node.className = 'letter-node-menu';
-                    node.textContent = letter;
-                    node.style.position = 'absolute';
-                    node.style.left = `${x}px`;
-                    node.style.top = `${y}px`;
-                    node.style.transform = `translate(-50%, -50%)`;
-                    node.style.backgroundColor = team.color;
-                    node.style.width = '24px';
-                    node.style.height = '24px';
-                    node.style.fontSize = '10px';
-                    node.style.borderRadius = '50%';
-                    node.style.display = 'flex';
-                    node.style.alignItems = 'center';
-                    node.style.justifyContent = 'center';
-                    node.style.border = '1px solid rgba(255,255,255,0.3)';
-                    node.style.color = 'white';
-                    node.style.fontWeight = 'bold';
-                    node.style.cursor = 'default';
-
-                    const status = team.letters[letter];
-                    if (status === 'correct') {
-                        node.style.backgroundColor = '#00d084';
-                    } else if (status === 'error') {
-                        node.style.backgroundColor = '#ff141e';
-                    } else if (status === 'pasapalabra') {
-                        node.style.backgroundColor = '#ee9950';
-                    }
-
-                    container.appendChild(node);
-                });
-            });
-        }
-
-        // Update menu display every second
-        function startMenuUpdates() {
-            setInterval(() => {
-                if (currentView === 'menu') {
-                    teams.forEach((team, idx) => {
-                        document.getElementById(`menu-correct-${idx}`).textContent = team.correct;
-                        document.getElementById(`menu-error-${idx}`).textContent = team.error;
-                        document.getElementById(`menu-timer-${idx}`).textContent = formatTime(team.time);
-                    });
-                }
-            }, 1000);
-        }
-
-        // View Functions
-        function showMenu() {
-            currentView = 'menu';
-            document.getElementById('menu-view').classList.remove('hidden');
-            document.getElementById('team-view').classList.add('hidden');
-        }
-
-        function selectTeam(idx) {
-            currentTeam = idx;
-            currentView = 'team';
-            const team = teams[idx];
+        function switchView(view) {
+            viewState = view;
+            Object.values(screens).forEach(s => s.classList.add('hidden'));
+            Object.values(screens).forEach(s => s.classList.remove('flex'));
             
-            document.getElementById('menu-view').classList.add('hidden');
-            document.getElementById('team-view').classList.remove('hidden');
-
-            document.documentElement.style.setProperty('--team-color', team.color);
-            document.getElementById('team-title').textContent = `Equipo ${team.name}`;
-            document.getElementById('team-title').style.color = team.color;
-
-            // Start all timers
-            teams.forEach((t, i) => {
-                if (t.timerInterval) clearInterval(t.timerInterval);
-                startTeamTimer(i);
-            });
-
-            updateTeamDisplay(idx);
-            drawRosco(idx);
-        }
-
-        // Display Functions
-        function updateTeamDisplay(idx) {
-            const team = teams[idx];
-            document.getElementById('team-correct').textContent = team.correct;
-            document.getElementById('team-error').textContent = team.error;
-            document.getElementById('team-timer').textContent = formatTime(team.time);
+            screens[view].classList.remove('hidden');
+            screens[view].classList.add(view === 'global' || view === 'individual' ? 'flex' : 'block');
             
-            const pending = Object.values(team.letters).filter(s => s === 'pending').length;
-            document.getElementById('team-remaining').textContent = `${pending} letras`;
+            if (view === 'start') screens.start.classList.add('flex');
             
-            const currentLetter = LETTERS[team.currentIndex];
-            document.getElementById('current-letter').textContent = currentLetter;
-        }
-
-        function formatTime(seconds) {
-            const mins = Math.floor(seconds / 60);
-            const secs = seconds % 60;
-            return `${mins}:${secs.toString().padStart(2, '0')}`;
-        }
-
-        // Rosco Functions
-        function drawRosco(idx) {
-            const team = teams[idx];
-            const rosco = document.getElementById('rosco');
-            rosco.innerHTML = '';
-
-            const radius = 150;
-            const angleStep = (2 * Math.PI) / LETTERS.length;
-
-            LETTERS.forEach((letter, i) => {
-                const angle = i * angleStep - Math.PI / 2;
-                const x = radius + (radius - 24) * Math.cos(angle);
-                const y = radius + (radius - 24) * Math.sin(angle);
-
-                const node = document.createElement('div');
-                node.className = 'letter-node';
-                node.id = `letter-${i}`;
-                node.textContent = letter;
-                node.dataset.index = i;
-                node.style.position = 'absolute';
-                node.style.left = `${x}px`;
-                node.style.top = `${y}px`;
-                node.style.transform = `translate(-50%, -50%)`;
-                node.style.backgroundColor = team.color;
-
-                const status = team.letters[letter];
-                if (status === 'correct') {
-                    node.classList.add('correct');
-                    node.style.backgroundColor = '#00d084';
-                } else if (status === 'error') {
-                    node.classList.add('error');
-                    node.style.backgroundColor = '#ff141e';
-                } else if (status === 'pasapalabra') {
-                    node.classList.add('pasapalabra');
-                    node.style.backgroundColor = '#ee9950';
-                }
-
-                if (i === team.currentIndex) {
-                    node.classList.add('active');
-                }
-
-                node.addEventListener('click', () => selectLetter(idx, i));
-                rosco.appendChild(node);
-            });
-        }
-
-        function selectLetter(teamIdx, letterIdx) {
-            if (currentView === 'team' && currentTeam === teamIdx) {
-                teams[teamIdx].currentIndex = letterIdx;
-                updateTeamDisplay(teamIdx);
-                drawRosco(teamIdx);
-            }
-        }
-
-        // Keyboard Controls
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' || e.key.toLowerCase() === 'm') {
-                e.preventDefault();
-                teams.forEach(t => {
-                    if (t.timerInterval) clearInterval(t.timerInterval);
-                });
-                showMenu();
-            } else if (e.key >= '1' && e.key <= '4') {
-                e.preventDefault();
-                selectTeam(parseInt(e.key) - 1);
-            } else if (currentView === 'team') {
-                handleTeamControls(e);
-            }
-        });
-
-        function handleTeamControls(e) {
-            const team = teams[currentTeam];
-            const key = e.key.toLowerCase();
-
-            if (key === 'c') {
-                e.preventDefault();
-                markLetter('correct');
-            } else if (key === 'e') {
-                e.preventDefault();
-                markLetter('error');
-            } else if (key === 'p') {
-                e.preventDefault();
-                markLetter('pasapalabra');
-            } else if (key === ' ') {
-                e.preventDefault();
-                togglePause();
-            } else if (key === '+' || key === '=') {
-                e.preventDefault();
-                addTime(5);
-            } else if (key === '-') {
-                e.preventDefault();
-                addTime(-5);
-            } else if (key === 't') {
-                e.preventDefault();
-                showTimeDialog();
-            } else if (key === 'arrowleft') {
-                e.preventDefault();
-                team.currentIndex = (team.currentIndex - 1 + LETTERS.length) % LETTERS.length;
-                updateTeamDisplay(currentTeam);
-                drawRosco(currentTeam);
-            } else if (key === 'arrowright') {
-                e.preventDefault();
-                team.currentIndex = (team.currentIndex + 1) % LETTERS.length;
-                updateTeamDisplay(currentTeam);
-                drawRosco(currentTeam);
-            }
-        }
-
-        // Game Logic
-        function markLetter(status) {
-            const team = teams[currentTeam];
-            const letter = LETTERS[team.currentIndex];
-            const node = document.getElementById(`letter-${team.currentIndex}`);
-
-            if (team.letters[letter] !== 'pending') return;
-
-            team.letters[letter] = status;
-
-            if (status === 'correct') {
-                team.correct++;
-                node.classList.add('correct', 'pop');
-                node.style.backgroundColor = '#00d084';
-            } else if (status === 'error') {
-                team.error++;
-                node.classList.add('error', 'shake');
-                node.style.backgroundColor = '#ff141e';
-                pauseTeam();
-            } else if (status === 'pasapalabra') {
-                node.classList.add('pasapalabra', 'shake');
-                node.style.backgroundColor = '#ee9950';
-                pauseTeam();
-            }
-
-            updateTeamDisplay(currentTeam);
-            drawMenuRoscos();
-
-            // Move to next pending letter
-            setTimeout(() => {
-                let found = false;
-                for (let i = 1; i < LETTERS.length; i++) {
-                    const nextIdx = (team.currentIndex + i) % LETTERS.length;
-                    const nextLetter = LETTERS[nextIdx];
-                    if (team.letters[nextLetter] === 'pending') {
-                        team.currentIndex = nextIdx;
-                        found = true;
-                        break;
-                    }
-                }
-                if (!found) {
-                    team.currentIndex = 0;
-                }
-                updateTeamDisplay(currentTeam);
-                drawRosco(currentTeam);
-            }, status === 'correct' ? 300 : 0);
-        }
-
-        function pauseTeam() {
-            const team = teams[currentTeam];
-            team.paused = true;
-            if (team.timerInterval) clearInterval(team.timerInterval);
-        }
-
-        function togglePause() {
-            const team = teams[currentTeam];
-            team.paused = !team.paused;
-            if (team.paused) {
-                if (team.timerInterval) clearInterval(team.timerInterval);
+            if (view !== 'individual') {
+                pauseTime();
+                activeTeamId = null;
             } else {
-                startTeamTimer(currentTeam);
+                updateIndividualView();
             }
         }
 
-        function startTeamTimer(idx) {
-            const team = teams[idx];
-            if (team.timerInterval) clearInterval(team.timerInterval);
+        function initGameData(startTime) {
+            teamsData = TEAMS_CONFIG.map(tc => {
+                return {
+                    ...tc,
+                    time: startTime,
+                    correct: 0,
+                    error: 0,
+                    currentIndex: 0,
+                    letters: ALPHABET.map(l => ({ letra: l, status: 'pending' })),
+                    isPlaying: false
+                };
+            });
+        }
 
-            team.timerInterval = setInterval(() => {
-                if (!team.paused) {
-                    team.time--;
-                    if (team.time < 0) team.time = 0;
+        // --- ROSCO RENDERING ---
+
+        // Generates the positions for the letters in a 270-degree arc
+        function generateRoscoPositions(containerWidth, numItems) {
+            const radius = containerWidth / 2;
+            const letterRadius = containerWidth > 400 ? 28 : (containerWidth > 200 ? 24 : 12); 
+            const effectiveRadius = radius - letterRadius - 5;
+            
+            // Start at bottom-left (135 deg) to bottom-right (405 deg = 45 deg)
+            // leaving the bottom 90 deg gap
+            const startAngleDeg = 135;
+            const endAngleDeg = 405;
+            
+            const startAngleRad = (startAngleDeg * Math.PI) / 180;
+            const endAngleRad = (endAngleDeg * Math.PI) / 180;
+            const angleStep = (endAngleRad - startAngleRad) / (numItems - 1);
+            
+            const positions = [];
+            for (let i = 0; i < numItems; i++) {
+                const angle = startAngleRad + i * angleStep;
+                const x = radius + effectiveRadius * Math.cos(angle);
+                const y = radius + effectiveRadius * Math.sin(angle);
+                positions.push({x, y});
+            }
+            return positions;
+        }
+
+        function renderGlobalCards() {
+            globalCardsContainer.innerHTML = '';
+            
+            teamsData.forEach(team => {
+                const card = document.createElement('div');
+                card.className = "team-card bg-black/30 backdrop-blur-sm border border-white/10 rounded-3xl p-6 cursor-pointer flex flex-col md:flex-row items-center gap-6 group relative overflow-hidden";
+                card.style.borderColor = team.color + '40';
+                
+                // Background glow
+                const glow = document.createElement('div');
+                glow.className = "absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity";
+                glow.style.background = `radial-gradient(circle at center, ${team.color} 0%, transparent 70%)`;
+                card.appendChild(glow);
+
+                // Mini rosco container
+                const roscoContainer = document.createElement('div');
+                roscoContainer.className = "relative w-[140px] h-[140px] flex-shrink-0 flex items-center justify-center";
+                
+                // Time inside mini rosco
+                const timeDiv = document.createElement('div');
+                timeDiv.className = "absolute inset-0 flex items-center justify-center font-mono font-bold text-3xl";
+                timeDiv.style.color = team.color;
+                timeDiv.textContent = team.time;
+                roscoContainer.appendChild(timeDiv);
+
+                card.appendChild(roscoContainer);
+
+                // Stats container
+                const statsDiv = document.createElement('div');
+                statsDiv.className = "flex flex-col flex-1 w-full text-center md:text-left z-10";
+                
+                statsDiv.innerHTML = `
+                    <h3 class="text-2xl font-black mb-4 uppercase tracking-wider" style="color: ${team.color}">${team.name}</h3>
+                    <div class="grid grid-cols-2 gap-2 mt-auto">
+                        <div class="bg-success/20 border border-success/30 rounded-xl p-3 text-center">
+                            <span class="block text-2xl font-bold text-success">${team.correct}</span>
+                            <span class="text-[10px] uppercase font-bold opacity-70">Aciertos</span>
+                        </div>
+                        <div class="bg-error/20 border border-error/30 rounded-xl p-3 text-center">
+                            <span class="block text-2xl font-bold text-error">${team.error}</span>
+                            <span class="text-[10px] uppercase font-bold opacity-70">Fallos</span>
+                        </div>
+                    </div>
+                `;
+                
+                card.appendChild(statsDiv);
+
+                // Render mini letters
+                // Use a short timeout to let the container size settle
+                setTimeout(() => {
+                    const rect = roscoContainer.getBoundingClientRect();
+                    const positions = generateRoscoPositions(rect.width || 140, ALPHABET.length);
                     
-                    if (currentView === 'team' && currentTeam === idx) {
-                        updateTeamDisplay(idx);
+                    team.letters.forEach((lData, i) => {
+                        const node = document.createElement('div');
+                        node.className = 'letter-node global-node';
+                        if (lData.status === 'correct') node.classList.add('correct');
+                        if (lData.status === 'error') node.classList.add('error');
+                        if (i === team.currentIndex && lData.status === 'pending') {
+                            node.style.background = team.color;
+                        }
+                        
+                        node.style.left = `${positions[i].x}px`;
+                        node.style.top = `${positions[i].y}px`;
+                        node.style.transform = `translate(-50%, -50%)`;
+                        
+                        roscoContainer.appendChild(node);
+                    });
+                }, 0);
+
+                card.addEventListener('click', () => {
+                    activeTeamId = team.id;
+                    switchView('individual');
+                });
+
+                globalCardsContainer.appendChild(card);
+            });
+        }
+
+        function renderIndividualRosco() {
+            indivRosco.innerHTML = '';
+            const team = teamsData[activeTeamId];
+            if (!team) return;
+
+            const rect = indivRosco.getBoundingClientRect();
+            const width = rect.width || 500;
+            const positions = generateRoscoPositions(width, ALPHABET.length);
+
+            team.letters.forEach((lData, i) => {
+                const node = document.createElement('div');
+                node.className = 'letter-node indiv-node';
+                node.id = `indiv-letter-${i}`;
+                node.textContent = lData.letra;
+                
+                if (lData.status === 'correct') node.classList.add('correct');
+                else if (lData.status === 'error') node.classList.add('error');
+                
+                // Allow clicking a letter to jump to it
+                node.addEventListener('click', () => {
+                    if (lData.status === 'pending') {
+                        team.currentIndex = i;
+                        updateIndividualView();
                     }
+                });
+                
+                node.style.left = `${positions[i].x}px`;
+                node.style.top = `${positions[i].y}px`;
+                node.style.transform = `translate(-50%, -50%)`;
+                
+                // Apply base color to active letter
+                if (i === team.currentIndex) {
+                    node.style.backgroundColor = team.color;
+                }
+                
+                indivRosco.appendChild(node);
+            });
+
+            // Set active class
+            const activeNode = document.getElementById(`indiv-letter-${team.currentIndex}`);
+            if (activeNode) {
+                activeNode.classList.add('active');
+                activeNode.style.color = team.color; // The text color gets the glow
+            }
+        }
+
+        function updateIndividualView() {
+            const team = teamsData[activeTeamId];
+            if (!team) return;
+
+            // Set CSS variables for coloring
+            document.documentElement.style.setProperty('--active-color', team.color);
+
+            indivTeamName.textContent = team.name;
+            indivTimer.textContent = team.time;
+            
+            const currentLData = team.letters[team.currentIndex];
+            indivCurrentLetter.textContent = currentLData.letra;
+            
+            if(team.isPlaying) {
+                indivTimerIcon.textContent = "▶️";
+                indivTimerIcon.classList.add("animate-pulse");
+            } else {
+                indivTimerIcon.textContent = "⏸️";
+                indivTimerIcon.classList.remove("animate-pulse");
+            }
+
+            renderIndividualRosco();
+        }
+
+        // --- TIME LOGIC ---
+
+        function toggleTime() {
+            if (activeTeamId === null) return;
+            const team = teamsData[activeTeamId];
+            
+            if (team.isPlaying) {
+                pauseTime();
+            } else {
+                startTime();
+            }
+        }
+
+        function startTime() {
+            if (activeTeamId === null) return;
+            const team = teamsData[activeTeamId];
+            team.isPlaying = true;
+            
+            clearInterval(timerInterval);
+            timerInterval = setInterval(() => {
+                if (team.time > 0) {
+                    team.time--;
+                    indivTimer.textContent = team.time;
+                    if(team.time <= 10) indivTimer.style.color = '#ff141e';
+                    else indivTimer.style.color = team.color;
+                } else {
+                    pauseTime();
                 }
             }, 1000);
+            
+            updateIndividualView();
         }
 
-        function addTime(seconds) {
-            const team = teams[currentTeam];
-            team.time = Math.max(0, team.time + seconds);
-            updateTeamDisplay(currentTeam);
-        }
-
-        function showTimeDialog() {
-            const newTime = prompt('Introduce el tiempo en segundos:', teams[currentTeam].time.toString());
-            if (newTime !== null && !isNaN(newTime)) {
-                teams[currentTeam].time = Math.max(0, parseInt(newTime));
-                updateTeamDisplay(currentTeam);
+        function pauseTime() {
+            clearInterval(timerInterval);
+            if (activeTeamId !== null) {
+                teamsData[activeTeamId].isPlaying = false;
+                indivTimer.style.color = teamsData[activeTeamId].color;
+                updateIndividualView();
             }
         }
 
-        // Initialize on load
-        window.addEventListener('load', init);
+        function addTime(amount) {
+            if (activeTeamId === null) return;
+            const team = teamsData[activeTeamId];
+            team.time = Math.max(0, team.time + amount);
+            indivTimer.textContent = team.time;
+            
+            // Visual feedback
+            indivTimer.classList.add('scale-125');
+            setTimeout(() => indivTimer.classList.remove('scale-125'), 200);
+        }
 
-        // Cleanup on unload
-        window.addEventListener('beforeunload', () => {
-            teams.forEach(t => {
-                if (t.timerInterval) clearInterval(t.timerInterval);
-            });
+        // --- GAME LOGIC ---
+
+        function advanceToNextPending(team) {
+            let found = false;
+            let checks = 0;
+            while(checks < ALPHABET.length) {
+                team.currentIndex = (team.currentIndex + 1) % ALPHABET.length;
+                if (team.letters[team.currentIndex].status === 'pending') {
+                    found = true;
+                    break;
+                }
+                checks++;
+            }
+            if(!found) {
+                // Game over for this team
+                pauseTime();
+            }
+        }
+
+        function processAction(action) {
+            if (activeTeamId === null) return;
+            const team = teamsData[activeTeamId];
+            const activeNode = document.getElementById(`indiv-letter-${team.currentIndex}`);
+            
+            if(action === 'correct') {
+                team.letters[team.currentIndex].status = 'correct';
+                team.correct++;
+                if(activeNode) activeNode.classList.add('pop-ok');
+                advanceToNextPending(team);
+                updateIndividualView();
+            } 
+            else if(action === 'error') {
+                team.letters[team.currentIndex].status = 'error';
+                team.error++;
+                pauseTime(); // auto pause
+                if(activeNode) {
+                    activeNode.classList.add('shake-err');
+                    setTimeout(() => {
+                        advanceToNextPending(team);
+                        updateIndividualView();
+                    }, 500); // Wait for animation
+                } else {
+                    advanceToNextPending(team);
+                    updateIndividualView();
+                }
+            }
+            else if(action === 'pasa') {
+                pauseTime(); // auto pause
+                advanceToNextPending(team);
+                updateIndividualView();
+            }
+        }
+
+        // --- EVENT LISTENERS ---
+
+        document.getElementById('start-btn').addEventListener('click', () => {
+            const t = parseInt(defaultTimeInput.value) || 150;
+            initGameData(t);
+            switchView('global');
+            renderGlobalCards();
         });
-        </script>
-    </body>
+
+        document.getElementById('reset-game-btn').addEventListener('click', () => {
+            if(confirm("¿Seguro que quieres reiniciar todo el juego?")) {
+                switchView('start');
+            }
+        });
+
+        document.getElementById('back-to-global-btn').addEventListener('click', () => {
+            switchView('global');
+            renderGlobalCards();
+        });
+
+        // Individual buttons
+        document.getElementById('btn-correct').addEventListener('click', () => processAction('correct'));
+        document.getElementById('btn-error').addEventListener('click', () => processAction('error'));
+        document.getElementById('btn-pasa').addEventListener('click', () => processAction('pasa'));
+        document.getElementById('btn-space').addEventListener('click', toggleTime);
+        document.getElementById('btn-minus').addEventListener('click', () => addTime(-5));
+        document.getElementById('btn-plus').addEventListener('click', () => addTime(5));
+
+        // Keyboard controls
+        window.addEventListener('keydown', (e) => {
+            if (viewState !== 'individual') return;
+            
+            // Ignore if typing in an input
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+
+            switch(e.code) {
+                case 'Space':
+                    e.preventDefault();
+                    toggleTime();
+                    break;
+                case 'ArrowUp':
+                case 'KeyC':
+                    e.preventDefault();
+                    processAction('correct');
+                    break;
+                case 'ArrowDown':
+                case 'KeyE':
+                    e.preventDefault();
+                    processAction('error');
+                    break;
+                case 'ArrowRight':
+                case 'KeyP':
+                    e.preventDefault();
+                    processAction('pasa');
+                    break;
+                case 'KeyW':
+                case 'NumpadAdd':
+                case 'Equal': // + key
+                    e.preventDefault();
+                    addTime(5);
+                    break;
+                case 'KeyS':
+                case 'NumpadSubtract':
+                case 'Minus': // - key
+                    e.preventDefault();
+                    addTime(-5);
+                    break;
+            }
+        });
+
+        // Resize handler to redraw roscos properly
+        window.addEventListener('resize', () => {
+            if (viewState === 'global') {
+                renderGlobalCards();
+            } else if (viewState === 'individual') {
+                renderIndividualRosco();
+            }
+        });
+    </script>
+</body>
 </html>
